@@ -5,21 +5,21 @@
 class Claudeline < Formula
   desc "Real-time statusline for Claude Code"
   homepage "https://github.com/lexfrei/claudeline"
-  version "1.7.0"
+  version "1.7.1"
   license "BSD-3-Clause"
   depends_on :macos
 
   if Hardware::CPU.intel?
-    url "https://github.com/lexfrei/claudeline/releases/download/v1.7.0/claudeline_darwin_amd64.tar.gz"
-    sha256 "119fe3808c5c9da743d3c8db2ffb856096fc1b1fceff57afefbef9f43c5365c2"
+    url "https://github.com/lexfrei/claudeline/releases/download/v1.7.1/claudeline_darwin_amd64.tar.gz"
+    sha256 "6861df4fb8e476dc1101721edff06c6719d31a7b72cbae027d0b9aea8ef7ce8e"
 
     define_method(:install) do
       bin.install "claudeline"
     end
   end
   if Hardware::CPU.arm?
-    url "https://github.com/lexfrei/claudeline/releases/download/v1.7.0/claudeline_darwin_arm64.tar.gz"
-    sha256 "860322a4968708bdf3040117ca464a7412c63c679a70ca4507b240b0411ff05b"
+    url "https://github.com/lexfrei/claudeline/releases/download/v1.7.1/claudeline_darwin_arm64.tar.gz"
+    sha256 "5073d2e6610bf4d810323a2443b6770b3f47d5ad1d7b2d83892128d2239b1402"
 
     define_method(:install) do
       bin.install "claudeline"
