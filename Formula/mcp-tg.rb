@@ -5,13 +5,13 @@
 class McpTg < Formula
   desc "MCP server for the Telegram Client API (MTProto, user account)"
   homepage "https://github.com/lexfrei/mcp-tg"
-  version "1.3.1"
+  version "1.4.0"
   license "BSD-3-Clause"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.3.1/mcp-tg_1.3.1_darwin_amd64.tar.gz"
-      sha256 "71c3ceced5996e84acbb0bd17995c110b254141c92914bc3ad8cbf7ed91c56db"
+      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.4.0/mcp-tg_1.4.0_darwin_amd64.tar.gz"
+      sha256 "4b253ea304d29c39ddbfe32dc9261a449f4b33449532f4a703aa7b88938ddb53"
 
       define_method(:install) do
         bin.install "mcp-tg"
@@ -48,8 +48,8 @@ class McpTg < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.3.1/mcp-tg_1.3.1_darwin_arm64.tar.gz"
-      sha256 "3535541bb68244b142ab562fcce5dfeee1c421e4320feb14721b11c90afb24e0"
+      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.4.0/mcp-tg_1.4.0_darwin_arm64.tar.gz"
+      sha256 "abe3c163ffb56e3c6752bb9c4a58d6f86fb3c17cc0d332b7c93e1371ee3c0f9c"
 
       define_method(:install) do
         bin.install "mcp-tg"
@@ -89,8 +89,8 @@ class McpTg < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.3.1/mcp-tg_1.3.1_linux_amd64.tar.gz"
-      sha256 "c7207a68a247e5d5f9b4e447e2df93ccb0220a095661dff0a0950d39ca9975f1"
+      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.4.0/mcp-tg_1.4.0_linux_amd64.tar.gz"
+      sha256 "269c25cbd2f981468d400656213ad2357b8ce9c0ccd3b6bdb90d5d85957428f5"
       define_method(:install) do
         bin.install "mcp-tg"
 
@@ -126,8 +126,8 @@ class McpTg < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.3.1/mcp-tg_1.3.1_linux_arm64.tar.gz"
-      sha256 "ffafd56572ab44ebf802da03fbe07c2f0775893d7e4319ff991b066b0a5eb4a8"
+      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.4.0/mcp-tg_1.4.0_linux_arm64.tar.gz"
+      sha256 "f76edb19605f3fd4161b724bba0bd90f21d38e125717da811f53a18628377604"
       define_method(:install) do
         bin.install "mcp-tg"
 
@@ -215,12 +215,17 @@ class McpTg < Formula
   end
 
   test do
-    # The binary has no --version flag and every real command talks to
-    # Telegram, so missing credentials is the only offline path. The vars
-    # must be cleared explicitly: the caveats tell users to export them, and
-    # with them set the process opens a live MTProto connection and never
-    # returns — brew test would hang.
+    # Every real command talks to Telegram, so both checks here are the ones
+    # that stay offline. The credentials must be cleared explicitly: the
+    # caveats tell users to export them, and with them set the process opens
+    # a live MTProto connection and never returns — brew test would hang.
     assert_match "TELEGRAM_APP_ID is required",
       shell_output("TELEGRAM_APP_ID= TELEGRAM_APP_HASH= #{bin}/mcp-tg 2>&1", 1)
+    # --version exits before any Telegram work, and it is the only thing that
+    # checks the ldflags above reached this build: the linker ignores -X for a
+    # symbol that does not exist without a word, so a rename would ship a
+    # formula whose every release introduces itself as "dev". Homebrew's
+    # `version` has no leading v, and the build line carries it as a substring.
+    assert_match version.to_s, shell_output("#{bin}/mcp-tg --version")
   end
 end
