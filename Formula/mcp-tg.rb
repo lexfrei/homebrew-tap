@@ -5,13 +5,13 @@
 class McpTg < Formula
   desc "MCP server for the Telegram Client API (MTProto, user account)"
   homepage "https://github.com/lexfrei/mcp-tg"
-  version "1.5.0"
+  version "1.6.0"
   license "BSD-3-Clause"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.5.0/mcp-tg_1.5.0_darwin_amd64.tar.gz"
-      sha256 "83394cecd1affceb72d7ff8c251b2b0d57c6ce6a3aa51db6d7cd5ba6b246ffe9"
+      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.6.0/mcp-tg_1.6.0_darwin_amd64.tar.gz"
+      sha256 "ccce5374c9ae1fc3cd0f030bfdc6d96cee4f164d94f7f491fd5489bb8ae9e24b"
 
       define_method(:install) do
         bin.install "mcp-tg"
@@ -48,8 +48,8 @@ class McpTg < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.5.0/mcp-tg_1.5.0_darwin_arm64.tar.gz"
-      sha256 "fcc45123eac028606ede1e434c6f855dd181cf1c181d1ffa4f459c17e1cd48c9"
+      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.6.0/mcp-tg_1.6.0_darwin_arm64.tar.gz"
+      sha256 "4426dcc7cc45056704aa7355bc2574d5f01fea974ff7ff19584ff761742dfdc5"
 
       define_method(:install) do
         bin.install "mcp-tg"
@@ -89,8 +89,8 @@ class McpTg < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.5.0/mcp-tg_1.5.0_linux_amd64.tar.gz"
-      sha256 "aa9e415e7ca25261408deafd736da35943596d94c06095bfdd90b60ea7879d58"
+      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.6.0/mcp-tg_1.6.0_linux_amd64.tar.gz"
+      sha256 "de441fe2c6e7b5636c6b1a422e47a15162d42203e224b90eb2691707b3b8fbc6"
       define_method(:install) do
         bin.install "mcp-tg"
 
@@ -126,8 +126,8 @@ class McpTg < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.5.0/mcp-tg_1.5.0_linux_arm64.tar.gz"
-      sha256 "47858819940c649de7b0e671cb92243268282b289a87b6b5a9efb0c107022332"
+      url "https://github.com/lexfrei/mcp-tg/releases/download/v1.6.0/mcp-tg_1.6.0_linux_arm64.tar.gz"
+      sha256 "1ea4b2a7b00a9eb4106f6a46a9ca4af271fd7efba3f5ce51c17f9924d3123060"
       define_method(:install) do
         bin.install "mcp-tg"
 
