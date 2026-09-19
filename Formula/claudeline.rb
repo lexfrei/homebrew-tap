@@ -5,24 +5,42 @@
 class Claudeline < Formula
   desc "Real-time statusline for Claude Code"
   homepage "https://github.com/lexfrei/claudeline"
-  version "1.9.0"
+  version "1.10.0"
   license "BSD-3-Clause"
-  depends_on :macos
 
-  if Hardware::CPU.intel?
-    url "https://github.com/lexfrei/claudeline/releases/download/v1.9.0/claudeline_darwin_amd64.tar.gz"
-    sha256 "0c25a95cffdd980d94077777e125ee245b298bfcdd5688e3d3ba429ef3fb6821"
+  on_macos do
+    if Hardware::CPU.intel?
+      url "https://github.com/lexfrei/claudeline/releases/download/v1.10.0/claudeline_darwin_amd64.tar.gz"
+      sha256 "05c882b8c89826154b9cd567091c1bdc723d0f7fa35f5c1c5478dd732e364a6e"
 
-    define_method(:install) do
-      bin.install "claudeline"
+      define_method(:install) do
+        bin.install "claudeline"
+      end
+    end
+    if Hardware::CPU.arm?
+      url "https://github.com/lexfrei/claudeline/releases/download/v1.10.0/claudeline_darwin_arm64.tar.gz"
+      sha256 "b993edadd78fe878ce153ccd1394a6a4f46067cc73994e9af0c81e3f9b6433ef"
+
+      define_method(:install) do
+        bin.install "claudeline"
+      end
     end
   end
-  if Hardware::CPU.arm?
-    url "https://github.com/lexfrei/claudeline/releases/download/v1.9.0/claudeline_darwin_arm64.tar.gz"
-    sha256 "91d299d869dc114ffac57c0c87e07ad508d0d2be12f5a1ee2d7ba110051d8834"
 
-    define_method(:install) do
-      bin.install "claudeline"
+  on_linux do
+    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/lexfrei/claudeline/releases/download/v1.10.0/claudeline_linux_amd64.tar.gz"
+      sha256 "484f6e8c669a8c36bba9dab3c85a1835d0f26495a1b5cd23952819801e7ecef8"
+      define_method(:install) do
+        bin.install "claudeline"
+      end
+    end
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/lexfrei/claudeline/releases/download/v1.10.0/claudeline_linux_arm64.tar.gz"
+      sha256 "46f679a65da3060687be691bd568d3f0a13edb57264a1e9c88d8f4823ccd219e"
+      define_method(:install) do
+        bin.install "claudeline"
+      end
     end
   end
 end
