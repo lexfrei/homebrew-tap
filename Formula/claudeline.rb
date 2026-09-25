@@ -10,8 +10,8 @@ class Claudeline < Formula
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/lexfrei/claudeline/releases/download/v1.10.1/claudeline_darwin_amd64.tar.gz"
-      sha256 "c6c3bd8b450708d21fe26aebd8a2c901a9a37c80e43f8d87c4c59d647e595bdf"
+      url "https://github.com/lexfrei/claudeline/archive/refs/tags/v1.11.0.tar.gz"
+      sha256 "217c5320d80368df61e37a972e0864c00e044f0fc93df64b87457c04987d2707"
 
       define_method(:install) do
         bin.install "claudeline"
