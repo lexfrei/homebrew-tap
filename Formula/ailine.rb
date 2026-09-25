@@ -5,13 +5,13 @@
 class Ailine < Formula
   desc "Real-time statusline for Claude Code"
   homepage "https://github.com/lexfrei/ailine"
-  version "1.11.0"
+  version "1.11.1"
   license "BSD-3-Clause"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/lexfrei/ailine/releases/download/v1.11.0/ailine_darwin_amd64.tar.gz"
-      sha256 "c23ca2ae987098ce93e0eec29472d035ad0813d62ea135e6f072a10c0e023db7"
+      url "https://github.com/lexfrei/ailine/releases/download/v1.11.1/ailine_darwin_amd64.tar.gz"
+      sha256 "d69cbf6ef6f66ce03cfc3ecdaa7e5db135f460b8c555443072423b42632f26f3"
 
       define_method(:install) do
         bin.install "ailine"
@@ -19,8 +19,8 @@ class Ailine < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/lexfrei/ailine/releases/download/v1.11.0/ailine_darwin_arm64.tar.gz"
-      sha256 "50b5872c08b7b0603ea0049731822ee4346c669d8cc6ed24638c73c3a3c01749"
+      url "https://github.com/lexfrei/ailine/releases/download/v1.11.1/ailine_darwin_arm64.tar.gz"
+      sha256 "019b0ae2f20c305e3ab3ee70b3918df691eb0f5cbb86f08fa0dca67bfc2b657e"
 
       define_method(:install) do
         bin.install "ailine"
@@ -31,16 +31,16 @@ class Ailine < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/lexfrei/ailine/releases/download/v1.11.0/ailine_linux_amd64.tar.gz"
-      sha256 "a33dab1cd75ba967e4d36f475339010bcb426b1e50b5f05c0dd8c324c1544ef3"
+      url "https://github.com/lexfrei/ailine/releases/download/v1.11.1/ailine_linux_amd64.tar.gz"
+      sha256 "8d1d5ddfde9b3a7c4bdd9f84d011bb5abbd51b11177dac7ab5086ce1bc9988c3"
       define_method(:install) do
         bin.install "ailine"
         bin.install_symlink "ailine" => "claudeline"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/lexfrei/ailine/releases/download/v1.11.0/ailine_linux_arm64.tar.gz"
-      sha256 "d8014187a2869ca0b5bdefb4254662f5962fbc4e065e008037443845bc9ba731"
+      url "https://github.com/lexfrei/ailine/releases/download/v1.11.1/ailine_linux_arm64.tar.gz"
+      sha256 "8a51fb9c768ac574da3d1f79e349a55d37c772e2805d705fedadebbd7c00e503"
       define_method(:install) do
         bin.install "ailine"
         bin.install_symlink "ailine" => "claudeline"
