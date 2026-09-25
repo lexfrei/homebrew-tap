@@ -12,10 +12,10 @@ brew tap lexfrei/tap
 
 | Formula | Description |
 | --- | --- |
-| [claudeline](https://github.com/lexfrei/claudeline) | Claude Code statusline with real usage limits from Anthropic API |
+| [ailine](https://github.com/lexfrei/ailine) | Claude Code statusline with real usage limits from Anthropic API (formerly claudeline) |
 
-### Install claudeline
+### Install ailine
 
 ```bash
-brew install lexfrei/tap/claudeline
+brew install lexfrei/tap/ailine
 ```
