@@ -10,8 +10,8 @@ class Ailine < Formula
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/lexfrei/ailine/releases/download/v1.10.2/ailine_darwin_amd64.tar.gz"
-      sha256 "31ff01c7b5746c3dda67405e14a2ac39bde957d330ec33ab09e04dee45cbf8cd"
+      url "https://github.com/lexfrei/ailine/archive/refs/tags/v1.11.1.tar.gz"
+      sha256 "c46e6106f1156dd2b4d4443d3ca4876a563b9e27faab906445c81b8bd5fef7fe"
 
       define_method(:install) do
         bin.install "ailine"
